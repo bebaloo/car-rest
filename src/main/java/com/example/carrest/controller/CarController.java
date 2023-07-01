@@ -1,7 +1,6 @@
 package com.example.carrest.controller;
 
 import com.example.carrest.model.entity.Car;
-import com.example.carrest.repository.CarRepository;
 import com.example.carrest.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

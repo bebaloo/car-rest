@@ -2,7 +2,7 @@ package com.example.carrest.service.impl;
 
 import com.example.carrest.exception.EntityNotDeletedException;
 import com.example.carrest.exception.EntityNotFoundException;
-import com.example.carrest.exception.EntityNotSavedException;
+import com.example.carrest.exception.EntityNotCreatedException;
 import com.example.carrest.exception.EntityNotUpdatedException;
 import com.example.carrest.model.entity.Car;
 import com.example.carrest.repository.CarRepository;
@@ -37,7 +37,7 @@ public class CarServiceImpl implements CarService {
         try {
             return carRepository.save(car);
         } catch (RuntimeException e) {
-            throw new EntityNotSavedException(car + " not saved", e);
+            throw new EntityNotCreatedException(car + " not saved", e);
         }
     }
 
