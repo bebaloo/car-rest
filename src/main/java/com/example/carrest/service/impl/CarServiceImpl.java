@@ -1,10 +1,10 @@
 package com.example.carrest.service.impl;
 
-import com.example.carrest.model.entity.Car;
 import com.example.carrest.exception.EntityNotDeletedException;
 import com.example.carrest.exception.EntityNotFoundException;
 import com.example.carrest.exception.EntityNotSavedException;
 import com.example.carrest.exception.EntityNotUpdatedException;
+import com.example.carrest.model.entity.Car;
 import com.example.carrest.repository.CarRepository;
 import com.example.carrest.service.CarService;
 import lombok.RequiredArgsConstructor;
