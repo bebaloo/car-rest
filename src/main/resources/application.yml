@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: postgres
+    password: baloo
+    url: jdbc:postgresql://localhost:5432/cars
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
