@@ -7,11 +7,11 @@ import java.util.List;
 public interface CarService {
     List<Car> getAll();
 
-    Car getById(Long id);
+    Car get(Long id);
 
-    void create(Car car);
+    Car create(Car car);
 
-    void update(Car updatedCar);
+    Car update(Car updatedCar);
 
-    void deleteById(Long id);
+    Car delete(Long id);
 }

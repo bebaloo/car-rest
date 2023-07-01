@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CarServiceImpl implements CarService {
-    private CarRepository carRepository;
+    private final CarRepository carRepository;
 
     @Override
     public List<Car> getAll() {
@@ -24,7 +24,7 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car getById(Long id) {
+    public Car get(Long id) {
         try {
             return carRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         } catch (EntityNotFoundException e) {
@@ -33,31 +33,32 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public void create(Car car) {
+    public Car create(Car car) {
         try {
-            carRepository.save(car);
+            return carRepository.save(car);
         } catch (RuntimeException e) {
             throw new EntityNotSavedException(car + " not saved", e);
         }
     }
 
     @Override
-    public void update(Car updatedCar) {
+    public Car update(Car updatedCar) {
         try {
             Car car = carRepository.findById(updatedCar.getId()).orElseThrow(EntityNotFoundException::new);
             BeanUtils.copyProperties(updatedCar, car, "id");
 
-            carRepository.save(car);
+            return carRepository.save(car);
         } catch (RuntimeException e) {
             throw new EntityNotUpdatedException(updatedCar + " not updated", e);
         }
     }
 
     @Override
-    public void deleteById(Long id) {
+    public Car delete(Long id) {
         try {
             Car car = carRepository.findById(id).orElseThrow(EntityNotFoundException::new);
             carRepository.delete(car);
+            return car;
         } catch (RuntimeException e) {
             throw new EntityNotDeletedException("Car with id: " + id + " not deleted", e);
         }

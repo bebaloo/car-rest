@@ -21,6 +21,7 @@ public class Car {
     private String brand;
     private String model;
     private int yearOfManufacture;
+    @Enumerated(EnumType.STRING)
     private BodyType bodyType;
 
     @Override
