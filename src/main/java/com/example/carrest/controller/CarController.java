@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/cars")
+@RequestMapping("api/v1/cars")
 @RequiredArgsConstructor
 public class CarController {
     private final CarService carService;
@@ -36,7 +36,8 @@ public class CarController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Car> delete(@PathVariable Long id) {
-        return ResponseEntity.ok(carService.delete(id));
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        carService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

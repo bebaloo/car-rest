@@ -54,14 +54,12 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public Car delete(Long id) {
+    public void delete(Long id) {
         try {
             Car car = carRepository.findById(id).orElseThrow(EntityNotFoundException::new);
             carRepository.delete(car);
-            return car;
         } catch (RuntimeException e) {
             throw new EntityNotDeletedException("Car with id: " + id + " not deleted", e);
         }
-
     }
 }
